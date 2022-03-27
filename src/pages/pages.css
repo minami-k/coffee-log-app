@@ -1,0 +1,143 @@
+.main-box {
+  margin-top: 100px;
+}
+.main-box label {
+  margin-bottom: 1rem;
+  line-height: 3;
+}
+/*main-------------*/
+.main-title {
+  text-align: center;
+}
+.each-article {
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 43%;
+}
+.each-article h1 {
+  margin-top: 0;
+}
+.article-content {
+  padding: 1rem;
+}
+.top-posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+.post-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+.link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+.post-bottom {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+.post-img {
+  width: 100%;
+  margin: 0 auto 2rem;
+}
+
+/*login------------*/
+.login-form {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 20px;
+  margin-bottom: 10rem;
+}
+
+/*new post---------------*/
+.new-post {
+  width: 60%;
+  margin: 0 auto;
+}
+.new-post h1 {
+  text-align: center;
+}
+.post-form {
+  padding: 3rem;
+}
+.pic{
+    margin-top: 2rem;
+}
+
+/*single post----------------*/
+.post {
+  width: 80%;
+  margin: auto;
+}
+.post-detail {
+  padding: 3rem;
+  padding-bottom: 1rem;
+}
+
+.button {
+  background: #331a00;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  border-radius: 7px;
+}
+Button.delete {
+  margin-right: 1rem;
+}
+.delete-edit-button {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*edit post*/
+.edit-cancel-button {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+}
+Button.cancel {
+  margin-left: 1rem;
+}
+Button.cancel a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1080px){
+    .top-posts{
+        width: 95%;
+    }
+    .each-article {
+        padding: 1rem;
+    }
+    .each-article h1 {
+        font-size: 23px;
+    }
+    .new-post {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .main-box {
+        margin-top: 30px;
+    }
+    .post-form {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    .each-article {
+        margin: 1rem 0;
+        width: 100%;
+    }
+}
