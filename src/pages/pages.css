@@ -1,5 +1,6 @@
 .main-box {
   margin-top: 100px;
+  margin-bottom: 150px;
 }
 .main-box label {
   margin-bottom: 1rem;
@@ -82,7 +83,7 @@
 }
 .post-detail {
   padding: 3rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 .button {
