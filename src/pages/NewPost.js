@@ -69,9 +69,6 @@ const NewPost = ({ isLoggedIn }) => {
             });
             
             navigate("/");
-  
-          
-
         })
       }
     )

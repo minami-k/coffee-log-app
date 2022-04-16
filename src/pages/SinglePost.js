@@ -52,17 +52,6 @@ const SinglePost = ({ postId, getPostId, isLoggedIn }) => {
     }
   }, [paramsId, singlePostHandler]);
 
-/*   const state = () => {
-    onAuthStateChanged(auth, (user) => {
-      if(user){
-  
-      }else{
-  
-    }}
-    );
-    }
- */  
-
   return (
     <div className="main-box">
       <>

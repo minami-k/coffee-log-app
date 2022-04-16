@@ -113,7 +113,7 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
                 onClick={editPost}
                 variant="contained"
                 type="submit"
-                to="/post/:id"
+                to={`/post/${postId}`}
               >
                 Edit
               </Link>
