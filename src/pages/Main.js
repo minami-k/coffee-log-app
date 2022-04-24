@@ -14,7 +14,6 @@ import "./pages.css";
 import { Link } from "react-router-dom";
 import { Grid, Paper } from "@mui/material";
 import moment from "moment";
-import Sidebar from "../components/Sidebar";
 
 const Main = ({ isLoggedIn, getPostId }) => {
   const [posts, setPosts] = useState([]);
