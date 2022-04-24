@@ -25,7 +25,7 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsLoggedIn(false);
-      window.location.pathname = "/login";
+      window.location.pathname = "/";
     });
   };
   return (
