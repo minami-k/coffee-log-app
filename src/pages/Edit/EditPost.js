@@ -7,9 +7,9 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
-import { db, auth } from "../firebase-config";
+import { db, auth } from "../../firebase-config";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import "./pages.css";
+import "./editPost.css";
 import { Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -33,9 +33,9 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
 
   let navigate = useNavigate();
 
-  const postsRef = doc(db, "blog-post", postId);
+  const postsRef = doc(db, "coffee-log", postId);
   const updatePost = (id) => {
-    const postDoc = collection(db, "blog-post");
+    const postDoc = collection(db, "coffee-log");
     return updateDoc(postDoc);
   };
 
@@ -48,7 +48,7 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
   };
 
   const getPost = (id) => {
-    const postsRef = doc(db, "blog-post", id);
+    const postsRef = doc(db, "coffee-log", id);
     return getDoc(postsRef);
   };
 

@@ -1,0 +1,26 @@
+/*single post----------------*/
+.post {
+    width: 80%;
+    margin: auto;
+  }
+  .post-detail {
+    padding: 3rem;
+    padding-bottom: 2rem;
+  }
+  
+  .button {
+    background: #331a00;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 7px;
+  }
+  Button.delete {
+    margin-right: 1rem;
+  }
+  .delete-edit-button {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  

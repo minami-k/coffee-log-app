@@ -2,12 +2,13 @@ body{
     margin: 0;
 }
 .hero-section{
-    background-image: url(./img/heroImg.jpg);
-    padding-top: calc(1280/1920 * 50%);
+    background-image: url(./img/top-img.jpg);
+    padding-top: calc(699/1727 * 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
+/*
 .hero-filter{
     background-color: rgba(0,0,0,0.2);
     padding-top: calc(1280/1920 * 50%);
@@ -24,7 +25,7 @@ body{
     color: #fff;
     font-size: 40px;
     text-shadow: 1px 1px 2px yellow;
-}
+}*/
 @media screen and (max-width: 480px){
     .hero-section {
         padding-top: calc(1280/1920 * 100%);

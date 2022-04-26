@@ -1,0 +1,26 @@
+/*new post---------------*/
+.new-post {
+  width: 60%;
+  margin: 0 auto;
+}
+.new-post h1 {
+  text-align: center;
+}
+.post-form {
+  padding: 3rem;
+}
+.pic {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 1080px) {
+  .new-post {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .post-form {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+}

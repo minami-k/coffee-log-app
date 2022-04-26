@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../firebase-config";
-import "./pages.css";
+import { auth, db } from "../../firebase-config";
+import "./singlePost.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Container, Paper, Button } from "@mui/material";
 import moment from 'moment'
@@ -19,13 +19,13 @@ const SinglePost = ({ postId, getPostId, isLoggedIn }) => {
 
 
   const deletePost = async (id) => {
-    const postDoc = doc(db, "blog-post", id);
+    const postDoc = doc(db, "coffee-log", id);
     await deleteDoc(postDoc);
     navigate('/')
   };
 
   const getPost = (id) => {
-    const postsRef = doc(db, "blog-post", id);
+    const postsRef = doc(db, "coffee-log", id);
     return getDoc(postsRef);
   };
 
