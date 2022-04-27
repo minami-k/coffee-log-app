@@ -1,0 +1,11 @@
+.timer{
+    margin-bottom: 10rem;
+}
+
+.timer button {
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    margin-right: 0.5rem;
+    background: #4d1a00;
+    color: #fff;
+}

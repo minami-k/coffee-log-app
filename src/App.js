@@ -3,8 +3,8 @@ import Main from "./pages/Main/Main";
 import NewPost from "./pages/NewPost/NewPost";
 import EditPost from "./pages/Edit/EditPost";
 import Login from "./pages/Login/Login";
-import SinglePost from "./pages/SinglePost/SinglePost";
 import Nav from "./components/Nav/Nav";
+import StopWatch from "./components/StopWatch/StopWatch";
 import { useState } from "react";
 import { Box } from "@mui/material";
 import "./style.css";
@@ -30,16 +30,10 @@ function App() {
           path="/"
           element={<Main isLoggedIn={isLoggedIn} getPostId={postIdHandler} />}
         />
+
         <Route
-          path="/post/:id"
-          element={
-            <SinglePost
-              isLoggedIn={isLoggedIn}
-              getPostId={postIdHandler}
-              postId={postId}
-              setPostId={setPostId}
-            />
-          }
+          path="/timer"
+          element={<StopWatch />}
         />
         <Route
           path="/newpost"

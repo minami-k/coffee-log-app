@@ -51,6 +51,12 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
                   </Link>
                 </Typography>
 
+                <Typography>
+                  <Link to="/timer" className="nav-link">
+                    Timer
+                  </Link>
+                </Typography>
+
                 <Button
                   color="button"
                   variant="outlined"

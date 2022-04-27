@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStopwatch } from 'react-timer-hook';
 import Time from "../Time/Time"
+import "./stopWatch.css"
 
 const StopWatch = () => {
     const {
@@ -15,7 +16,7 @@ const StopWatch = () => {
     
       return (
           <>
-        <div style={{textAlign: 'center'}}>
+        <div class="timer" style={{textAlign: 'center'}}>
           <div style={{fontSize: '100px'}}>
             <span>{minutes}</span>:<span>{seconds}</span>
           </div>

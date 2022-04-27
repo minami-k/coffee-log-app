@@ -84,6 +84,8 @@ const Main = ({ isLoggedIn, getPostId }) => {
                   </div>
                   <div className="post-content"><span class="font-b">Memo</span> : {post.note}</div>
                 </div>
+                <div>
+              {isLoggedIn && author.id === auth.currentUser.uid && (
 
                 <Link
                   className="link"
@@ -93,6 +95,8 @@ const Main = ({ isLoggedIn, getPostId }) => {
                 >
                   Edit 
                 </Link>
+              )}
+              </div>
             {/*     <p className="post-bottom">
                   Posted on {moment(post.createdAt.toDate()).calendar()}
                 </p> 
