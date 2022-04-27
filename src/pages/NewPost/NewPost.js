@@ -23,6 +23,7 @@ import Select from "react-select";
 const NewPost = ({ isLoggedIn }) => {
   const [bean, setBean] = useState("");
   const [method, setMethod] = useState("");
+  const [time, setTime] = useState("");
   const [note, setNote] = useState("");
   const [weight, setWeight] = useState("");
   const [grind, setGrind] = useState(""); 
@@ -46,6 +47,7 @@ const NewPost = ({ isLoggedIn }) => {
     await addDoc(postsRef, {
       bean,
       method,
+      time,
       weight,
       grind,
       water,
@@ -101,28 +103,6 @@ const NewPost = ({ isLoggedIn }) => {
     }
   });
 
-  const grindSizeOptions = [
-    { value: "0.1", label: "0.1" },
-    { value: "0.3", label: "0.3" },
-    { value: "0.5", label: "0.5" },
-    { value: "0.75", label: "0.75" },
-    { value: "1", label: "1" },
-    { value: "1.5", label: "1.5" },
-  ];
-
-  const coffeeAmountOptions = [
-    { value: "10", label: "10" },
-    { value: "15", label: "15" },
-    { value: "20", label: "20" },
-    { value: "25", label: "25" },
-    { value: "30", label: "30" },
-    { value: "35", label: "35" },
-    { value: "40", label: "40" },
-  ];
-
-  const GrindSize = () => <Select options={grindSizeOptions} />;
-  const AmountOfCoffee = () => <Select options={coffeeAmountOptions} />;
-
   return (
     <ThemeProvider theme={theme}>
       <div className="main-box new-post">
@@ -156,6 +136,20 @@ const NewPost = ({ isLoggedIn }) => {
                 }}
               />
             </div>
+            <div>
+              <label>Brewing time:</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="00 : 00"
+                value={time}
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
+              />
+            </div>
+
             <div>
               <label>Weight(g):</label>
               <br />

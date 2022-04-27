@@ -24,7 +24,6 @@ const StopWatch = () => {
           <button onClick={pause}>Pause</button>
           <button onClick={reset}>Reset</button>
         </div>
-        <Time minutes={minutes} seconds={seconds}/>
         </>
       );
     }

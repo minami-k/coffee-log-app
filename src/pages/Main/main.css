@@ -1,11 +1,26 @@
 /*main-------------*/
+.font-b {
+  font-weight: bold;
+}
+.main-box {
+  padding-top: 100px;
+  padding-bottom: 150px;
+  background-image: url("../../img/bg-img.jpg");
+  background-repeat: repeat;
+  background-size: contain;
+  background-position-x: center;
+}
+.main-box label {
+  margin-bottom: 1rem;
+  line-height: 3;
+}
 .main-title {
   text-align: center;
 }
 .each-article {
   padding: 2rem;
   margin: 2rem 0;
-  width: 23%;
+  width: 27%;
 }
 .each-article h1 {
   margin-top: 0;
@@ -16,7 +31,7 @@
 .top-posts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 90%;
   margin: auto;
 }

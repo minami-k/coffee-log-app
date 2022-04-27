@@ -6,6 +6,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  deleteDoc
 } from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { useNavigate, Link, useParams } from "react-router-dom";
@@ -19,9 +20,17 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
   const [post, setPost] = useState();
   /* const [loading, setLoading] = useState(true)
    */
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [bean, setBean] = useState("");
+  const [method, setMethod] = useState("");
+  const [time, setTime] = useState("");
+  const [note, setNote] = useState("");
+  const [weight, setWeight] = useState("");
+  const [grind, setGrind] = useState(""); 
+  const [water, setWater] = useState("");
+  const [temp, setTemp] = useState("");
+  const [taste, setTaste] = useState("");
   const [author, setAuthor] = useState("");
+
 
   const theme = createTheme({
     palette: {
@@ -41,8 +50,15 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
 
   const editPost = async () => {
     await updateDoc(postsRef, {
-      title,
-      content,
+      bean,
+      method,
+      time,
+      weight,
+      grind,
+      water,
+      temp,
+      taste,
+      note,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
     });
   };
@@ -57,8 +73,16 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
       const docSnap = await getPost(postId);
       console.log("The doc", docSnap.data());
 
-      setTitle(docSnap.data().title);
-      setContent(docSnap.data().content);
+      setBean(docSnap.data().bean);
+      setMethod(docSnap.data().method);
+      setTime(docSnap.data().time);
+      setWeight(docSnap.data().weight);
+      setGrind(docSnap.data().grind);
+      setWater(docSnap.data().water);
+      setTemp(docSnap.data().temp);
+      setTaste(docSnap.data().taste);
+      setAuthor(docSnap.data().author);
+      setNote(docSnap.data().note);
     } catch (err) {
       console.log("Error happend");
     }
@@ -75,54 +99,162 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
     const postDoc = doc(db, "blog-post", id)
     const updatedPost = {}
   } */
-
+  const deletePost = async (id) => {
+    const postDoc = doc(db, "coffee-log", id);
+    await deleteDoc(postDoc);
+    navigate('/')
+  };
   return (
     <ThemeProvider theme={theme}>
       <div className="main-box new-post">
         <h1>Edit Post</h1>
         <Paper>
           <div className="post-form">
+          <div>
+              <label>Bean:</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="Bean type"
+                value={bean}
+                onChange={(e) => {
+                  setBean(e.target.value);
+                }}
+              />
+            </div>
             <div>
-              <label>Title:</label>
+              <label>Method:</label>
               <br />
               <TextField
                 style={{ width: "100%" }}
                 id="outlined"
                 placeholder="Title"
-                value={title}
+                value={method}
                 onChange={(e) => {
-                  setTitle(e.target.value);
+                  setMethod(e.target.value);
                 }}
               />
             </div>
             <div>
-              <label>Content:</label>
+              <label>Brewing time:</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="00 : 00"
+                value={time}
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Weight(g):</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="amount of coffee"
+                value={weight}
+                onChange={(e) => {
+                  setWeight(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Grind Size:</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="Coarse, medium-coarse ..."
+                value={grind}
+                onChange={(e) => {
+                  setGrind(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Water(ml):</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="Amount of water"
+                value={water}
+                onChange={(e) => {
+                  setWater(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Water Temperature(°C):</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="Water temperature"
+                value={temp}
+                onChange={(e) => {
+                  setTemp(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Taste:</label>
+              <br />
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined"
+                placeholder="Sour, bitter, sweet etc"
+                value={taste}
+                onChange={(e) => {
+                  setTaste(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <label>Note:</label>
               <br />
               <textarea
-                value={content}
+                value={note}
                 onChange={(e) => {
-                  setContent(e.target.value);
+                  setNote(e.target.value);
                 }}
                 style={{ width: "100%", height: "300px" }}
                 placeholder="Write here"
               ></textarea>
             </div>
-            <div className="edit-cancel-button" style={{ marginTop: "10px" }}>
-              <Link
+            <div>
+              {isLoggedIn && author.id === auth.currentUser.uid && (
+                <div className="delete-edit-button">
+                  <Button
+                    className="delete"
+                    variant="outlined"
+                    color="error"
+                    onClick={() => {
+                      deletePost(postId);
+                    }}
+                  >
+                    X
+                  </Button>
+                  <Link
                 className="button"
                 onClick={editPost}
                 variant="contained"
                 type="submit"
-                to={`/post/${postId}`}
+                to={`/`}
               >
                 Edit
               </Link>
-              <Button color="button" variant="contained" type="submit" className="cancel">
-                <Link to="/" >
+              <Link to="/" >
                   Cancel
                 </Link>
-              </Button>
-            </div>
+                </div>
+ )}
+ 
+          </div>
           </div>
         </Paper>
       </div>
