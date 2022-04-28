@@ -3,6 +3,7 @@ import {auth, provider} from "../../firebase-config"
 import { signInWithPopup } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import Button from '@mui/material/Button';
+import "./login.css"
 
 const Login = ({setIsLoggedIn}) => {
   let navigate = useNavigate()

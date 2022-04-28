@@ -105,11 +105,11 @@ const NewPost = ({ isLoggedIn }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="main-box new-post">
+      <div className="main-box">
+        <div className="new-post">
         <h1>Create A New Post</h1>
         <Paper>
           <div className="post-form">
-            <StopWatch />
             <div>
               <label>Bean:</label>
               <br />
@@ -238,6 +238,7 @@ const NewPost = ({ isLoggedIn }) => {
             </Button>
           </div>
         </Paper>
+      </div>
       </div>
     </ThemeProvider>
   );

@@ -1,56 +1,25 @@
 import React, { useState, useEffect } from "react";
-import {
-  getDocs,
-  onSnapshot,
-  collection,
-  deleteDoc,
-  doc,
-  query,
-  orderBy,
-  Timestamp,
-} from "firebase/firestore";
-import { auth, db } from "../../firebase-config";
-import "./main.css";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { db, auth } from "../../firebase-config";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { Paper, Button } from "@mui/material";
 
-const Main = ({ isLoggedIn, getPostId, postId }) => {
+const Search = (isLoggedIn, getPostId) => {
+  const [data, setData] = useState({});
   const [posts, setPosts] = useState([]);
-  const [author, setAuthor] = useState("");
 
-  const postsRef = collection(db, "coffee-log");
+/*   const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
 
-  useEffect(() => {
-    /*     const getAllPosts = () => {
-      const q = query(postsRef, orderBy("createdAt", "desc"));
-      onSnapshot(q, (snapshot) => {
-        const allPosts = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setPosts(allPosts);
-      });
-    };
-    getAllPosts(); */
-    const getPosts = async () => {
-      const data = await getDocs(postsRef);
+  let query = useQuery();
+  let search = query.get("name");
+ */
 
-      console.log(
-        data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-      );
-      setPosts(
-        data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-      );
-    };
-    getPosts();
-  }, []);
 
+
+
+ 
 
   return (
     <div className="main-box">
@@ -106,12 +75,9 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
                   <div className="post-content">
                     <span class="font-b">Memo</span> : {post.note}
                   </div>
-                  <div className="post-content">
-                    <span class="font-b">Memo</span> : {post.author.name}
-                  </div>
                 </div>
                 <div>
-                  {isLoggedIn && author.name === auth.currentUser.uid && (
+                  {isLoggedIn && post.author.id === auth.currentUser.uid && (
                     <>
                       <Link
                         className="link"
@@ -125,10 +91,10 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
                   )}
                 </div>
                 {/*     <p className="post-bottom">
-                  Posted on {moment(post.createdAt.toDate()).calendar()}
-                </p> 
-               
-                <p className="post-bottom">Posted by {post.author.name}</p> */}
+              Posted on {moment(post.createdAt.toDate()).calendar()}
+            </p> 
+           
+            <p className="post-bottom">Posted by {post.author.name}</p> */}
               </Paper>
             </div>
           );
@@ -138,4 +104,4 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
   );
 };
 
-export default Main;
+export default Search;

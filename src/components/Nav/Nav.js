@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate  } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import AppBar from "@mui/material/AppBar";
@@ -21,6 +21,10 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
     },
   });
 
+  const [search, setSearch] = useState("")
+
+  let navigate = useNavigate()
+
   const userLogout = () => {
     signOut(auth).then(() => {
       localStorage.clear();
@@ -28,6 +32,13 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
       window.location.pathname = "/";
     });
   };
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    navigate(`/search?name=${search}`)
+    setSearch('')
+  }
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -56,6 +67,15 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
                     Timer
                   </Link>
                 </Typography>
+
+              <form onSubmit={submitHandler}>
+                <input
+                type="text"
+                placeholder="Search Item..."
+                onChange={(e) => setSearch(e.target.value)} 
+                value={search}
+                />
+              </form>
 
                 <Button
                   color="button"

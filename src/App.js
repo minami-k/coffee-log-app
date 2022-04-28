@@ -3,6 +3,7 @@ import Main from "./pages/Main/Main";
 import NewPost from "./pages/NewPost/NewPost";
 import EditPost from "./pages/Edit/EditPost";
 import Login from "./pages/Login/Login";
+import Search from "./components/Search/Search";
 import Nav from "./components/Nav/Nav";
 import StopWatch from "./components/StopWatch/StopWatch";
 import { useState } from "react";
@@ -28,13 +29,16 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main isLoggedIn={isLoggedIn} getPostId={postIdHandler} />}
+          element={
+            <Main
+              isLoggedIn={isLoggedIn}
+              getPostId={postIdHandler}
+              postId={postId}
+            />
+          }
         />
 
-        <Route
-          path="/timer"
-          element={<StopWatch />}
-        />
+        <Route path="/timer" element={<StopWatch />} />
         <Route
           path="/newpost"
           element={
@@ -58,6 +62,10 @@ function App() {
         <Route
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/search"
+          element={<Search isLoggedIn={isLoggedIn} getPostId={postIdHandler} postId={postId} />}
         />
       </Routes>
     </Router>
