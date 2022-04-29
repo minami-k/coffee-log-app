@@ -3,12 +3,15 @@ import { useLocation, Link } from "react-router-dom";
 import { db, auth } from "../../firebase-config";
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { Paper, Button } from "@mui/material";
+import algoliasearch from "algoliasearch/lite";
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import Hit from "../Hit/Hit"
 
-const Search = (isLoggedIn, getPostId) => {
+const Search = ({ isLoggedIn, getPostId, hit }) => {
   const [data, setData] = useState({});
   const [posts, setPosts] = useState([]);
 
-/*   const useQuery = () => {
+  /*   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
 
@@ -16,91 +19,18 @@ const Search = (isLoggedIn, getPostId) => {
   let search = query.get("name");
  */
 
-
-
-
- 
+  const searchClient = algoliasearch(
+    "K11WRSYGH1",
+    "4aeb3b14da8cb259a517fa672c667bd7"
+  );
 
   return (
     <div className="main-box">
-      <div className="top-posts">
-        {posts.map((post) => {
-          return (
-            <div key={post.id} className="each-article">
-              <Paper className="article-content">
-                <div>
-                  <div>
-                    <p>
-                      <span class="font-b">Bean</span> : {post.bean}
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Method</span> : {post.method}
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Brewing time</span> : {post.time}{" "}
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Amount of coffee</span> :{" "}
-                      {post.weight} g
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Grind size</span> : {post.grind}{" "}
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Amount of water</span> : {post.water}{" "}
-                      ml
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">ater temperature</span> : {post.temp}{" "}
-                      °C
-                    </p>
-                  </div>
-                  <div>
-                    <p>
-                      <span class="font-b">Taste like</span> : {post.taste}{" "}
-                    </p>
-                  </div>
-                  <div className="post-content">
-                    <span class="font-b">Memo</span> : {post.note}
-                  </div>
-                </div>
-                <div>
-                  {isLoggedIn && post.author.id === auth.currentUser.uid && (
-                    <>
-                      <Link
-                        className="link"
-                        to={`/editpost/${post.id}`}
-                        post={post}
-                        onClick={(e) => getPostId(post.id)}
-                      >
-                        Edit
-                      </Link>
-                    </>
-                  )}
-                </div>
-                {/*     <p className="post-bottom">
-              Posted on {moment(post.createdAt.toDate()).calendar()}
-            </p> 
-           
-            <p className="post-bottom">Posted by {post.author.name}</p> */}
-              </Paper>
-            </div>
-          );
-        })}
+        <InstantSearch searchClient={searchClient} indexName={"coffee-log"}>
+          <SearchBox />
+          <Hits hitComponent={Hit} />
+        </InstantSearch>
       </div>
-    </div>
   );
 };
 

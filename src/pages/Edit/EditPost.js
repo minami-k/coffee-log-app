@@ -107,7 +107,7 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
   return (
     <ThemeProvider theme={theme}>
       <div className="main-box new-post">
-        <h1>Edit Post</h1>
+        <h1>Edit A Note</h1>
         <Paper>
           <div className="post-form">
           <div>
@@ -230,17 +230,17 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
               {isLoggedIn && author.id === auth.currentUser.uid && (
                 <div className="delete-edit-button">
                   <Button
-                    className="delete"
+                    className="edit-button delete"
                     variant="outlined"
                     color="error"
                     onClick={() => {
                       deletePost(postId);
                     }}
                   >
-                    X
+                    Delete
                   </Button>
                   <Link
-                className="button"
+                className="edit-button button"
                 onClick={editPost}
                 variant="contained"
                 type="submit"
@@ -248,8 +248,8 @@ const EditPost = ({ isLoggedIn, postId, setPostId }) => {
               >
                 Edit
               </Link>
-              <Link to="/" >
-                  Cancel
+              <Link to="/" className="cancel-button" >
+                  Go back to Home
                 </Link>
                 </div>
  )}

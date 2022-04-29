@@ -8,6 +8,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./nav.css";
+import Search from "../Search/Search"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 
 const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
   const theme = createTheme({
@@ -49,6 +53,16 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
                 HOME
               </Link>
             </Typography>
+            <Typography>
+                  <Link to="/search" className="nav-link">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </Link>
+                </Typography>
+                <Typography>
+                  <Link to="/timer" className="nav-link">
+                    Timer
+                  </Link>
+                </Typography>
 
             {!isLoggedIn ? (
               <Link to="/login" className="button">
@@ -62,20 +76,9 @@ const Nav = ({ isLoggedIn, setIsLoggedIn }) => {
                   </Link>
                 </Typography>
 
-                <Typography>
-                  <Link to="/timer" className="nav-link">
-                    Timer
-                  </Link>
-                </Typography>
+             
 
-              <form onSubmit={submitHandler}>
-                <input
-                type="text"
-                placeholder="Search Item..."
-                onChange={(e) => setSearch(e.target.value)} 
-                value={search}
-                />
-              </form>
+                
 
                 <Button
                   color="button"

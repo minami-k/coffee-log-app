@@ -1,0 +1,34 @@
+ul.ais-Hits-list{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: flex-start;
+    margin: auto;
+}
+li.ais-Hits-item{
+    width: 27%;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+form.ais-SearchBox-form{
+    text-align: center;
+}
+form.ais-SearchBox-form input{
+    height: 4rem;
+    font-size: 20px;
+    width: 350px;
+    padding: 0.5rem;
+}
+button.ais-SearchBox-submit, button.ais-SearchBox-reset{
+    display: none;
+}
+@media screen and (max-width: 480px) {
+    ul.ais-Hits-list{
+        display: block;
+    }
+    li.ais-Hits-item {
+        width: 90%;
+        padding: 0;
+    }
+}

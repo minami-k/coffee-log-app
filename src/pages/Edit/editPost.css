@@ -10,3 +10,15 @@
   Button.cancel a {
     text-decoration: none;
   }
+  .delete-edit-button{
+    margin-top: 1rem;
+    position: relative;
+  }
+  .edit-button{
+    margin-left: 1rem;
+  }
+  .cancel-button{
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+  }

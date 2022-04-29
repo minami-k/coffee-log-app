@@ -63,10 +63,10 @@ function App() {
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
-        <Route
+         <Route
           path="/search"
           element={<Search isLoggedIn={isLoggedIn} getPostId={postIdHandler} postId={postId} />}
-        />
+        /> 
       </Routes>
     </Router>
   );

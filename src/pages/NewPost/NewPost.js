@@ -55,6 +55,8 @@ const NewPost = ({ isLoggedIn }) => {
       taste,
       note,
       author: { name: auth.currentUser.displayName, id: auth.currentUser.uid },
+      createdAt: new Date(),
+
     });
     navigate("/");
   };
@@ -107,7 +109,7 @@ const NewPost = ({ isLoggedIn }) => {
     <ThemeProvider theme={theme}>
       <div className="main-box">
         <div className="new-post">
-        <h1>Create A New Post</h1>
+        <h1>Add A New Recipe</h1>
         <Paper>
           <div className="post-form">
             <div>
@@ -129,7 +131,7 @@ const NewPost = ({ isLoggedIn }) => {
               <TextField
                 style={{ width: "100%" }}
                 id="outlined"
-                placeholder="Title"
+                placeholder="Method"
                 value={method}
                 onChange={(e) => {
                   setMethod(e.target.value);
@@ -156,7 +158,7 @@ const NewPost = ({ isLoggedIn }) => {
               <TextField
                 style={{ width: "100%" }}
                 id="outlined"
-                placeholder="amount of coffee"
+                placeholder="Amount of coffee"
                 value={weight}
                 onChange={(e) => {
                   setWeight(e.target.value);

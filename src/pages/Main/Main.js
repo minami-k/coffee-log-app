@@ -13,6 +13,9 @@ import { auth, db } from "../../firebase-config";
 import "./main.css";
 import { Link } from "react-router-dom";
 import { Paper, Button } from "@mui/material";
+import moment from "moment";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const Main = ({ isLoggedIn, getPostId, postId }) => {
   const [posts, setPosts] = useState([]);
@@ -50,7 +53,6 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
     };
     getPosts();
   }, []);
-
 
   return (
     <div className="main-box">
@@ -106,29 +108,30 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
                   <div className="post-content">
                     <span class="font-b">Memo</span> : {post.note}
                   </div>
-                  <div className="post-content">
-                    <span class="font-b">Memo</span> : {post.author.name}
+                </div>
+
+                <div className="auth-edit">
+                  <div>
+                    {isLoggedIn && post.author.id === auth.currentUser.uid && (
+                      <>
+                        <Link
+                          className="link auth-edit-link"
+                          to={`/editpost/${post.id}`}
+                          post={post}
+                          onClick={(e) => getPostId(post.id)}
+                        >
+                          <FontAwesomeIcon icon={faPenToSquare} className="edit-icon"/>
+                        </Link>
+                      </>
+                    )}
                   </div>
+
+                  <p className="post-bottom">
+                    Posted on {moment(post.createdAt.toDate()).calendar()}
+                  </p>
+
+                  <p className="post-bottom">Posted by {post.author.name}</p>
                 </div>
-                <div>
-                  {isLoggedIn && author.name === auth.currentUser.uid && (
-                    <>
-                      <Link
-                        className="link"
-                        to={`/editpost/${post.id}`}
-                        post={post}
-                        onClick={(e) => getPostId(post.id)}
-                      >
-                        Edit
-                      </Link>
-                    </>
-                  )}
-                </div>
-                {/*     <p className="post-bottom">
-                  Posted on {moment(post.createdAt.toDate()).calendar()}
-                </p> 
-               
-                <p className="post-bottom">Posted by {post.author.name}</p> */}
               </Paper>
             </div>
           );
