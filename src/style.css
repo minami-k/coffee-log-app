@@ -8,10 +8,27 @@ body{
 }
 .hero-section{
     background-image: url(./img/top-img.jpg);
-    padding-top: calc(699/1727 * 100%);
+    padding-top: calc(2268/4302 * 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.hero-filter{
+    background-color: rgba(0,0,0,0.2);
+    padding-top: calc(2268/4302 * 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.hero-filter h1{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color: #fff;
+    font-size: 40px;
+    text-shadow: 1px 1px 2px yellow;
 }
 /*
 .hero-filter{

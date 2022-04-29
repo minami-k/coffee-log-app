@@ -26,7 +26,9 @@ function App() {
   return (
     <Router>
       <Nav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <Box className="hero-section"></Box>
+      <Box className="hero-section">
+        <Box className="hero-filter"><h1>Coffee Log App</h1></Box>
+      </Box>
       <Routes>
         <Route
           path="/"
