@@ -16,7 +16,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Grid, Paper } from "@mui/material";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import StopWatch from "../../components/StopWatch/StopWatch";
-import Taste from "../../components/Taste/Taste";
 
 import Select from "react-select";
 

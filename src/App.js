@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import NewPost from "./pages/NewPost/NewPost";
 import EditPost from "./pages/Edit/EditPost";
+import SinglePost from "./pages/SinglePost/SinglePost";
 import Login from "./pages/Login/Login";
 import Search from "./components/Search/Search";
 import Nav from "./components/Nav/Nav";
@@ -59,6 +60,11 @@ function App() {
             />
           }
         />
+                 <Route
+          path="/post/:id"
+          element={<SinglePost isLoggedIn={isLoggedIn} getPostId={postIdHandler} postId={postId} />}
+        /> 
+
         <Route
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}

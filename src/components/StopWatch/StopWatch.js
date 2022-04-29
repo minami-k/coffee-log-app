@@ -1,6 +1,5 @@
 import React from 'react'
 import { useStopwatch } from 'react-timer-hook';
-import Time from "../Time/Time"
 import "./stopWatch.css"
 
 const StopWatch = () => {

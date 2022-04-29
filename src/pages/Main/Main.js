@@ -106,9 +106,17 @@ const Main = ({ isLoggedIn, getPostId, postId }) => {
                     </p>
                   </div>
                   <div className="post-content">
-                    <span class="font-b">Memo</span> : {post.note}
+                    <span class="font-b post-content">Memo</span> : {post.note}
                   </div>
                 </div>
+                <Link
+                          className="link"
+                          to={`/post/${post.id}`}
+                          post={post}
+                          onClick={(e) => getPostId(post.id)}
+                        >
+                          Read more
+                        </Link>
 
                 <div className="auth-edit">
                   <div>
