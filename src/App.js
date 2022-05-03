@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import NewPost from "./pages/NewPost/NewPost";
@@ -7,7 +8,6 @@ import Login from "./pages/Login/Login";
 import Search from "./components/Search/Search";
 import Nav from "./components/Nav/Nav";
 import StopWatch from "./components/StopWatch/StopWatch";
-import { useState } from "react";
 import { Box } from "@mui/material";
 import "./style.css";
 
